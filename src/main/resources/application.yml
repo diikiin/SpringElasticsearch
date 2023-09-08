@@ -1,0 +1,2 @@
+elasicsearch:
+  url: localhost:9200

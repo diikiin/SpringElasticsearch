@@ -1,2 +1,6 @@
-elasicsearch:
+elasticsearch:
   url: localhost:9200
+
+server:
+  servlet:
+    context-path: /api

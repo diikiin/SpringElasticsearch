@@ -53,4 +53,27 @@ public class ProductServiceImpl implements ProductService {
         productRepository.deleteById(id);
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public Page<Product> getByName(String name, PageRequest pageRequest) {
+        return productRepository.findByName(name, pageRequest);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<Product> getByDescription(String description, PageRequest pageRequest) {
+        return productRepository.findByDescriptionLike(description, pageRequest);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<Product> getByPriceIsLessThan(Double price, PageRequest pageRequest) {
+        return productRepository.findByPriceIsLessThanEqual(price, pageRequest);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<Product> getByPriceIsGreaterThan(Double price, PageRequest pageRequest) {
+        return productRepository.findByPriceIsGreaterThanEqual(price, pageRequest);
+    }
 }

@@ -38,4 +38,24 @@ public class ProductController {
     public void delete(@PathVariable("id") Long id) {
         productService.delete(id);
     }
+
+    @GetMapping("/{name}")
+    public Page<Product> getByName(@PathVariable("name") String name, PageRequest pageRequest) {
+        return productService.getByName(name, pageRequest);
+    }
+
+    @GetMapping("/description")
+    public Page<Product> getByDescription(@RequestParam("description") String description, PageRequest pageRequest) {
+        return productService.getByDescription(description, pageRequest);
+    }
+
+    @GetMapping("/price/less/{price}")
+    public Page<Product> getByPriceIsLessThan(@PathVariable("price") Double price, PageRequest pageRequest) {
+        return productService.getByPriceIsLessThan(price, pageRequest);
+    }
+
+    @GetMapping("/price/greater/{price}")
+    public Page<Product> getByPriceIsGreaterThan(@PathVariable("price") Double price, PageRequest pageRequest) {
+        return productService.getByPriceIsGreaterThan(price, pageRequest);
+    }
 }

@@ -16,4 +16,12 @@ public interface ProductService {
 
     void delete(Long id);
 
+    Page<Product> getByName(String name, PageRequest pageRequest);
+
+    Page<Product> getByDescription(String description, PageRequest pageRequest);
+
+    Page<Product> getByPriceIsLessThan(Double price, PageRequest pageRequest);
+
+    Page<Product> getByPriceIsGreaterThan(Double price, PageRequest pageRequest);
+
 }

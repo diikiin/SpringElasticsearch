@@ -9,7 +9,7 @@ public interface ProductRepository extends ElasticsearchRepository<Product, Long
 
     Page<Product> findByName(String name, Pageable pageable);
 
-    Page<Product> findByDescriptionLike(String description, Pageable pageable);
+    Page<Product> findByCategory(String category, Pageable pageable);
 
     Page<Product> findByPriceIsLessThanEqual(Double price, Pageable pageable);
 

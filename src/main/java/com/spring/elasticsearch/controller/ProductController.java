@@ -4,7 +4,7 @@ import com.spring.elasticsearch.entity.Product;
 import com.spring.elasticsearch.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,8 +15,8 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping
-    public Page<Product> getAll(PageRequest pageRequest) {
-        return productService.getAll(pageRequest);
+    public Page<Product> getAll(Pageable pageable) {
+        return productService.getAll(pageable);
     }
 
     @GetMapping("/{id}")
@@ -40,22 +40,22 @@ public class ProductController {
     }
 
     @GetMapping("/{name}")
-    public Page<Product> getByName(@PathVariable("name") String name, PageRequest pageRequest) {
-        return productService.getByName(name, pageRequest);
+    public Page<Product> getByName(@PathVariable("name") String name, Pageable pageable) {
+        return productService.getByName(name, pageable);
     }
 
-    @GetMapping("/description")
-    public Page<Product> getByDescription(@RequestParam("description") String description, PageRequest pageRequest) {
-        return productService.getByDescription(description, pageRequest);
+    @GetMapping("/category")
+    public Page<Product> getByCategory(@RequestParam("category") String category, Pageable pageable) {
+        return productService.getByCategory(category, pageable);
     }
 
     @GetMapping("/price/less/{price}")
-    public Page<Product> getByPriceIsLessThan(@PathVariable("price") Double price, PageRequest pageRequest) {
-        return productService.getByPriceIsLessThan(price, pageRequest);
+    public Page<Product> getByPriceIsLessThan(@PathVariable("price") Double price, Pageable pageable) {
+        return productService.getByPriceIsLessThan(price, pageable);
     }
 
     @GetMapping("/price/greater/{price}")
-    public Page<Product> getByPriceIsGreaterThan(@PathVariable("price") Double price, PageRequest pageRequest) {
-        return productService.getByPriceIsGreaterThan(price, pageRequest);
+    public Page<Product> getByPriceIsGreaterThan(@PathVariable("price") Double price, Pageable pageable) {
+        return productService.getByPriceIsGreaterThan(price, pageable);
     }
 }

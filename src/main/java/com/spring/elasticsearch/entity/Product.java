@@ -11,15 +11,15 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(indexName = "products")
+@Document(indexName = "cluster-products")
 public class Product {
 
     @Id
     private Long id;
     @Field(type = FieldType.Text, name = "name")
     private String name;
-    @Field(type = FieldType.Text, name = "description")
-    private String description;
+    @Field(type = FieldType.Text, name = "category")
+    private String category;
     @Field(type = FieldType.Integer, name = "quality")
     private Integer quality;
     @Field(type = FieldType.Double, name = "price")

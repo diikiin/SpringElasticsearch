@@ -1,5 +1,6 @@
 package com.spring.elasticsearch.configuration;
 
+import jakarta.annotation.Nonnull;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.elasticsearch.client.ClientConfiguration;
@@ -18,6 +19,7 @@ public class CustomElasticsearchConfiguration extends ElasticsearchConfiguration
     private String elasticsearchPassword;
 
     @Override
+    @Nonnull
     public ClientConfiguration clientConfiguration() {
         return ClientConfiguration.builder()
                 .connectedTo(elasticsearchUrl)

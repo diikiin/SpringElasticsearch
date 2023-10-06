@@ -2,11 +2,11 @@ package com.spring.elasticsearch.service;
 
 import com.spring.elasticsearch.entity.Product;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 public interface ProductService {
 
-    Page<Product> getAll(PageRequest pageRequest);
+    Page<Product> getAll(Pageable pageable);
 
     Product getById(Long id);
 
@@ -16,12 +16,12 @@ public interface ProductService {
 
     void delete(Long id);
 
-    Page<Product> getByName(String name, PageRequest pageRequest);
+    Page<Product> getByName(String name, Pageable pageable);
 
-    Page<Product> getByDescription(String description, PageRequest pageRequest);
+    Page<Product> getByCategory(String category, Pageable pageable);
 
-    Page<Product> getByPriceIsLessThan(Double price, PageRequest pageRequest);
+    Page<Product> getByPriceIsLessThan(Double price, Pageable pageable);
 
-    Page<Product> getByPriceIsGreaterThan(Double price, PageRequest pageRequest);
+    Page<Product> getByPriceIsGreaterThan(Double price, Pageable pageable);
 
 }

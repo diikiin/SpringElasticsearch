@@ -4,7 +4,7 @@ import com.spring.elasticsearch.entity.Product;
 import com.spring.elasticsearch.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,8 +16,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional(readOnly = true)
-    public Page<Product> getAll(PageRequest pageRequest) {
-        return productRepository.findAll(pageRequest);
+    public Page<Product> getAll(Pageable pageable) {
+        return productRepository.findAll(pageable);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class ProductServiceImpl implements ProductService {
                 .orElseThrow();
 
         entity.setName(product.getName());
-        entity.setDescription(product.getDescription());
+        entity.setCategory(product.getCategory());
         entity.setQuality(product.getQuality());
         entity.setPrice(product.getPrice());
 
@@ -55,25 +55,25 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional(readOnly = true)
-    public Page<Product> getByName(String name, PageRequest pageRequest) {
-        return productRepository.findByName(name, pageRequest);
+    public Page<Product> getByName(String name, Pageable pageable) {
+        return productRepository.findByName(name, pageable);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Page<Product> getByDescription(String description, PageRequest pageRequest) {
-        return productRepository.findByDescriptionLike(description, pageRequest);
+    public Page<Product> getByCategory(String category, Pageable pageable) {
+        return productRepository.findByCategory(category, pageable);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Page<Product> getByPriceIsLessThan(Double price, PageRequest pageRequest) {
-        return productRepository.findByPriceIsLessThanEqual(price, pageRequest);
+    public Page<Product> getByPriceIsLessThan(Double price, Pageable pageable) {
+        return productRepository.findByPriceIsLessThanEqual(price, pageable);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Page<Product> getByPriceIsGreaterThan(Double price, PageRequest pageRequest) {
-        return productRepository.findByPriceIsGreaterThanEqual(price, pageRequest);
+    public Page<Product> getByPriceIsGreaterThan(Double price, Pageable pageable) {
+        return productRepository.findByPriceIsGreaterThanEqual(price, pageable);
     }
 }
